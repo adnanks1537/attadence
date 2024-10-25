@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCC Cadet Attendance - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>NCC Dashboard</h1>
+        <div class="nav-links">
+            <button onclick="showSection('attendanceSection')" class="btn btn-link">Attendance</button>
+            <button onclick="showSection('cadetsSection')" class="btn btn-link">Cadets</button>
+            <button onclick="logout()" class="btn btn-logout">Logout</button>
+        </div>
+    </nav>
+
+    <div id="attendanceSection" class="container">
+        <h2>Attendance Dashboard</h2>
+        <div class="attendance-form">
+            <input type="text" id="cadetID" placeholder="Enter Cadet ID">
+            <button onclick="markAttendance()" class="btn btn-attendance">Mark Attendance</button>
+        </div>
+        <div class="chart-container">
+            <canvas id="attendanceChart"></canvas>
+        </div>
+    </div>
+
+    <div id="cadetsSection" class="container" style="display: none;">
+        <h2>Cadets</h2>
+        <table id="cadetsTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Rank</th>
+                    <th>Year</th>
+                    <th>Mark Attendance</th>
+                </tr>
+            </thead>
+            <tbody id="cadetsTableBody">
+                <!-- Cadet data will be populated here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
