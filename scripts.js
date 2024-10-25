@@ -40,7 +40,15 @@ async function fetchCadetData() {
         const response = await axios.get('https://attadence.onrender.com/api/cadets');  // Updated API endpoint
         const cadets = response.data;
 
+        // Check if cadets data is an array and not empty
+        if (!Array.isArray(cadets) || cadets.length === 0) {
+            console.error("No cadet data found or response is not an array.");
+            return;
+        }
+
         const tableBody = document.getElementById('cadetsTableBody');
+        tableBody.innerHTML = ''; // Clear any existing data
+
         cadets.forEach(cadet => {
             const row = document.createElement('tr');
             row.innerHTML = `
@@ -53,7 +61,7 @@ async function fetchCadetData() {
             tableBody.appendChild(row);
         });
 
-        // Initialize DataTables for interactivity
+        // Initialize DataTables for interactivity after populating data
         $('#cadetsTable').DataTable();
     } catch (error) {
         console.error("Error fetching cadet data:", error);
