@@ -37,7 +37,7 @@ function showSection(sectionId) {
 // Fetch cadet data from API and populate the table
 async function fetchCadetData() {
     try {
-        const response = await axios.get('/api/cadets');  // Replace with actual API endpoint
+        const response = await axios.get('https://attadence.onrender.com/api/cadets');  // Updated API endpoint
         const cadets = response.data;
 
         const tableBody = document.getElementById('cadetsTableBody');
@@ -69,7 +69,7 @@ function logout() {
 // Mark Attendance Function
 async function markAttendance(cadetID) {
     try {
-        await axios.post('/api/attendance/mark', { cadetID });
+        await axios.post('https://attadence.onrender.com/api/attendance/mark', { cadetID });  // Updated API endpoint
         alert(`Attendance marked for Cadet ID: ${cadetID}`);
     } catch (error) {
         console.error("Error marking attendance:", error);
